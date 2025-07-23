@@ -6,20 +6,10 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/harish9907/hk.git'
-            }
-        }
-
         stage('Deploy to Kubernetes') {
             steps {
-                dir('k8s') {
-                    sh '''
-                        kubectl apply -f deployment.yaml
-                        kubectl apply -f service.yaml
-                    '''
-                }
+                sh 'kubectl apply -f flask-app/k8s/deployment.yaml'
+                sh 'kubectl apply -f flask-app/k8s/service.yaml'
             }
         }
 
@@ -31,4 +21,3 @@ pipeline {
         }
     }
 }
-
