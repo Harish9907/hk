@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/harish9907/hk.git'
+                git 'https://github.com/harishkumar0799/hk.git'
             }
         }
       
